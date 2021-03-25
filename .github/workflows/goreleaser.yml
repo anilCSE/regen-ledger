@@ -18,8 +18,8 @@ jobs:
         run: |
           mkdir ../../osxcross
           git clone https://github.com/plentico/osxcross-target.git ../../osxcross/target
-          curl http://archive.ubuntu.com/ubuntu/pool/universe/libc/libcrypto++/libcrypto++6_5.6.4-8_amd64.deb
-          sudo dpkg -i lib*.deb
+          curl http://archive.ubuntu.com/ubuntu/pool/universe/libc/libcrypto++/libcrypto++6_5.6.4-8_amd64.deb --output libcrypto++6_5.6.4-8_amd64.deb
+          sudo dpkg -i libcrypto++6_5.6.4-8_amd64.deb
       -
         name: Checkout
         uses: actions/checkout@v2
