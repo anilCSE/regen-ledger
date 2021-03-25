@@ -44,9 +44,9 @@ builds:
       - darwin
     env:
       - CGO_ENABLED=1
-      - LD_LIBRARY_PATH=/home/runner/work/osxcross/target/binaries/lib
-      - CC=/home/runner/work/osxcross/target/binaries/bin/o64-clang
-      - CXX=/home/runner/work/osxcross/target/binaries/bin/o64-clang++
+      - LD_LIBRARY_PATH=/home/runner/work/osxcross/target/lib
+      - CC=/home/runner/work/osxcross/target/bin/o64-clang
+      - CXX=/home/runner/work/osxcross/target/bin/o64-clang++
     flags:
       - -tags="netgo,ledger"
       - -trimpath
