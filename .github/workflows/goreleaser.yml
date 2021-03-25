@@ -1,8 +1,8 @@
 name: goreleaser
 
 on:
- pull_request:
- push:
+  pull_request:
+  push:
 
 jobs:
   goreleaser:
@@ -13,16 +13,13 @@ jobs:
         run: |
           sudo apt-get install gcc-multilib g++-multilib clang 
           sudo apt-get install libcrypto++6 libssl1.1 libssl-dev --reinstall
-          echo "====================================="
-          ls /usr/lib/x86_64-linux-gnu
-          echo "====================================="
-          ln -s  /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1  /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0
-          echo "====================================="
       -
         name: OSXCross for CGO Support
         run: |
           mkdir ../../osxcross
           git clone https://github.com/plentico/osxcross-target.git ../../osxcross/target
+          curl http://archive.ubuntu.com/ubuntu/pool/universe/libc/libcrypto++/libcrypto++6_5.6.4-8_amd64.deb --output libcrypto++6_5.6.4-8_amd64.deb
+          sudo dpkg -i libcrypto++6_5.6.4-8_amd64.deb
       -
         name: Checkout
         uses: actions/checkout@v2
@@ -32,7 +29,7 @@ jobs:
         name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.16
+          go-version: 1.16.2
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
